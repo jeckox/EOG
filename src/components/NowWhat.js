@@ -7,6 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { withStyles } from "@material-ui/core/styles";
 import AvatarRaw from "@material-ui/core/Avatar";
+import DroneGraph from "./DroneGraph"
 
 const cardStyles = theme => ({
   root: {
@@ -43,7 +44,7 @@ const NowWhat = props => {
         <List>
           <ListItem>
             <Avatar>1</Avatar>
-            <ListItemText primary="Connect to the Drone API" />
+            <DroneGraph />
           </ListItem>
           <ListItem>
             <Avatar>2</Avatar>
