@@ -1,29 +1,47 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions";
-import ListItemText from "@material-ui/core/ListItemText";
-// import LinearProgress from "@material-ui/core/LinearProgress";
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import LinearProgress from "@material-ui/core/LinearProgress";
+
+const renderLineChart = dataInfo => {
+    return <LineChart width={500} height={300} data={dataInfo} >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="x"  interval="preserveEnd"/>
+        <Tooltip />
+        <YAxis domain={['auto', 'auto']}    interval="preserveStart"/>
+        <Line dot={false} type='monotone' dataKey='y' stroke='#40c3c5' />
+    </LineChart>
+};
 
 
 class DroneGraph extends Component {
     componentDidMount() {
-        this.props.onLoad();
+        setInterval(() => {
+            this.props.onLoad();
+        }, 4000);
     }
     render() {
         const {
-            loading
+            loading,
+            firstTime,
+            datas
         } = this.props;
-        if (loading) return <ListItemText primary="Connect to the Drone API" /> ;
-        return ( <ListItemText primary="Connect to the Drone API - Done" /> );
+        if (firstTime) return <LinearProgress /> ;
+        return (renderLineChart(datas));
     }
 }
 
 const mapState = (state, ownProps) => {
     const {
-        loading
+        loading,
+        datas,
+        firstTime
     } = state.drone;
     return {
-        loading
+        loading,
+        datas,
+        firstTime
     };
 };
 
