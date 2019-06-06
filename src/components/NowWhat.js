@@ -16,14 +16,7 @@ const cardStyles = theme => ({
 });
 const CardHeader = withStyles(cardStyles)(CardHeaderRaw);
 
-const avatarStyles = theme => ({
-  root: {
-    background: theme.palette.primary.main
-  },
-  title: {
-    color: "white"
-  }
-});
+
 
 
 const styles = {
@@ -35,16 +28,20 @@ const styles = {
 const NowWhat = props => {
   const { classes } = props;
   return (
-    <Card className={classes.card}>
-      <CardHeader title="Map Visualization" />
-      <CardContent>
-        <DroneMap></DroneMap>
-      </CardContent>
-      <CardHeader  title="Graph Visualization" />
-      <CardContent>
+    <div>
+      <Card className={classes.card}>
+        <CardHeader title="Map Visualization" />
+        <CardContent>
+          <DroneMap></DroneMap>
+        </CardContent>
+      </Card>
+      <Card className={classes.card}>
+        <CardHeader title="Graph Visualization" />
+        <CardContent>
           <DroneGraph></DroneGraph>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
