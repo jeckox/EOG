@@ -2,12 +2,9 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import CardHeaderRaw from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import { withStyles } from "@material-ui/core/styles";
-import AvatarRaw from "@material-ui/core/Avatar";
 import DroneGraph from "./DroneGraph";
+import DroneMap from "./DroneMap";
 
 const cardStyles = theme => ({
   root: {
@@ -27,7 +24,7 @@ const avatarStyles = theme => ({
     color: "white"
   }
 });
-const Avatar = withStyles(avatarStyles)(AvatarRaw);
+
 
 const styles = {
   card: {
@@ -39,28 +36,11 @@ const NowWhat = props => {
   const { classes } = props;
   return (
     <Card className={classes.card}>
-      <CardHeader title="OK, Adrian, you're all setup. Now What?" />
+      <CardHeader title="Map Visualization" />
       <CardContent>
-        <List>
-          <ListItem>
-            <Avatar>1</Avatar>
-            <ListItemText primary="Connect to the Drone API" />
-          </ListItem>
-          <ListItem>
-            <Avatar>2</Avatar>
-            <ListItemText primary="Create your Visualization" />
-          </ListItem>
-          <ListItem>
-            <Avatar>3</Avatar>
-            <ListItemText primary="Poll the API" />
-          </ListItem>
-          <ListItem>
-            <Avatar>4</Avatar>
-            <ListItemText primary="Submit Your App" />
-          </ListItem>
-        </List>
+        <DroneMap></DroneMap>
       </CardContent>
-      <CardHeader title="Graph Visualization" />
+      <CardHeader  title="Graph Visualization" />
       <CardContent>
           <DroneGraph></DroneGraph>
       </CardContent>
