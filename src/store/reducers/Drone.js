@@ -1,12 +1,12 @@
 import * as actions from "../actions";
 
 const initialState = {
-    firstTime: true,
+    loadingChart: true,
     loadingMap: true,
-    lastPosition:{},
+    lastPosition: {},
     actualData: [],
     grapHistory: [],
-    mapHistory:[]
+    mapHistory: []
 };
 
 const addZ = n => (n <= 9 ? '0' + n : n);
@@ -28,10 +28,10 @@ const droneDataRecevied = (state, action) => {
     graphData = data.map(function(d) {
         return { x: toDate(d.timestamp), y: d.metric }
     });
-    mapData = data[data.length-1];
+    mapData = data[data.length - 1];
     return {
         ...state,
-        firstTime: false,
+        loadingChart: false,
         loadingMap: false,
         actualData: graphData,
         actualMap: mapData,

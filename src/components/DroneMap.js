@@ -25,11 +25,6 @@ const renderMap = mapInfo => {
     />
 };
 class DroneMap extends Component {
-    componentDidMount() {
-        setInterval(() => {
-            this.props.onLoad();
-        }, 4000);
-    }
     render() {
         const {
             loadingMap,

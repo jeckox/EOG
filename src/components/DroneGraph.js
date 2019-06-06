@@ -23,10 +23,10 @@ class DroneGraph extends Component {
     }
     render() {
         const {
-            firstTime,
+            loadingChart,
             actualData
         } = this.props;
-        if (firstTime) return <LinearProgress /> ;
+        if (loadingChart) return <LinearProgress /> ;
         return (renderLineChart(actualData));
     }
 }
@@ -34,11 +34,11 @@ class DroneGraph extends Component {
 const mapState = (state, ownProps) => {
     const {
         actualData,
-        firstTime
+        loadingChart
     } = state.drone;
     return {
         actualData,
-        firstTime
+        loadingChart
     };
 };
 
