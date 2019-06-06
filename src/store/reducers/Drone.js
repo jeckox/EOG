@@ -1,9 +1,12 @@
 import * as actions from "../actions";
 
 const initialState = {
-    loading: false,
     firstTime: true,
-    datas: []
+    loadingMap: true,
+    lastPosition:{},
+    actualData: [],
+    grapHistory: [],
+    mapHistory:[]
 };
 
 const addZ = n => (n <= 9 ? '0' + n : n);
@@ -14,23 +17,26 @@ const toDate = theTime => {
     return yearDate + ' ' + timeDate;
 }
 const startLoading = (state, action) => {
-    return {...state, loading: true };
+    return {...state };
 };
 
 const droneDataRecevied = (state, action) => {
     const { data } = action.data;
     let graphData;
+    let mapData;
     if (!data.length) return state;
     graphData = data.map(function(d) {
         return { x: toDate(d.timestamp), y: d.metric }
     });
-
-
+    mapData = data[data.length-1];
     return {
         ...state,
-        loading: false,
         firstTime: false,
-        datas: graphData
+        loadingMap: false,
+        actualData: graphData,
+        actualMap: mapData,
+        mapHistory: [mapData, ...state.mapHistory],
+        grapHistory: [graphData, ...state.grapHistory]
     };
 };
 
