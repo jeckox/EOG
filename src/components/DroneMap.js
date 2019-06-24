@@ -7,21 +7,34 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 const MyMapComponent = compose(
     withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAPrEKRJMUOv7hPkg6bZaC-KSWRYI4K1t8&v=3.exp&libraries=geometry,drawing,places",
-        loadingElement: <div style={{ height: `100%` }} />,
-        containerElement: <div style={{ height: `400px` }} />,
-        mapElement: <div style={{ height: `100%` }} />,
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=insert-key&v=3.exp&libraries=geometry,drawing,places",
+        loadingElement: < div style = {
+            { height: `100%` } }
+        />,
+        containerElement: < div style = {
+            { height: `400px` } }
+        />,
+        mapElement: < div style = {
+            { height: `100%` } }
+        />,
     }),
     withScriptjs,
     withGoogleMap
 )((props) =>
-    <GoogleMap defaultZoom={3} defaultCenter={{ lat: props.position.latitude, lng: props.position.longitude }}>
-        <Marker position={{ lat: props.position.latitude, lng: props.position.longitude }}  />
-    </GoogleMap>
+    <
+    GoogleMap defaultZoom = { 3 }
+    defaultCenter = {
+        { lat: props.position.latitude, lng: props.position.longitude } } >
+    <
+    Marker position = {
+        { lat: props.position.latitude, lng: props.position.longitude } }
+    /> <
+    /GoogleMap>
 )
 const renderMap = mapInfo => {
     return <MyMapComponent
-        isMarkerShown="true" position={mapInfo}
+    isMarkerShown = "true"
+    position = { mapInfo }
     />
 };
 class DroneMap extends Component {
@@ -30,7 +43,7 @@ class DroneMap extends Component {
             loadingMap,
             actualMap
         } = this.props;
-        if (loadingMap) return <LinearProgress />;
+        if (loadingMap) return <LinearProgress / > ;
         return (renderMap(actualMap))
     }
 }
